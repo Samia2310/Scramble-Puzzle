@@ -1,0 +1,128 @@
+/* clients/src/components/StartPage.css */
+.start-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  width: 100vw;   
+  background: linear-gradient(135deg, #FF6F00 0%, #FFB300 100%); 
+  padding: 2rem;
+  box-sizing: border-box; 
+}
+
+.start-page-title {
+  font-size: 4rem; 
+  font-weight: 900; 
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.1rem; 
+  animation: fadeInDown 1s ease-out; 
+}
+
+.start-page-description {
+  font-size: 1.6rem; 
+  color: #FFF3E0; 
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-out; 
+}
+
+.difficulty-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 22rem; 
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+.difficulty-button {
+  padding: 1.35rem 2.2rem;
+  font-size: 1.6rem; 
+  font-weight: bold;
+  color: #4A2C0A;
+  border-radius: 0.75rem; 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden; 
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.difficulty-button:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.1); 
+}
+
+.difficulty-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.difficulty-button.very-easy {
+  background-color: #fbba81; 
+}
+.difficulty-button.very-easy:hover {
+  background-color: #f19b51; 
+}
+
+.difficulty-button.easy {
+  background-color: #FFA500;
+}
+.difficulty-button.easy:hover {
+  background-color: #FF8C00; 
+}
+
+.difficulty-button.medium {
+  background-color: #FF8C00;
+}
+.difficulty-button.medium:hover {
+  background-color: #fc7730; 
+}
+
+.difficulty-button.hard {
+  background-color: #E05000; 
+}
+.difficulty-button.hard:hover {
+  background-color: #CC4400; 
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

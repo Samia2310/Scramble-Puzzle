@@ -1,0 +1,169 @@
+/* clients/src/components/GameOverModal.css */
+
+.game-over-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 200, 150, 0.7); 
+    backdrop-filter: blur(10px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-modal-content {
+    background-color: #fee5c6;
+    padding: 1.2rem;
+    border-radius: 1.25rem; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
+    text-align: center;
+    max-width: 90%;
+    max-height: 720px;
+    width: clamp(300px, 80vw, 420px); 
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0; 
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 900; 
+    color: #ff8c00;
+    margin-bottom: 0.25rem; 
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); 
+    letter-spacing: 0.05em; 
+    flex-shrink: 0;
+}
+
+.modal-text {
+    font-size: 1.4rem; 
+    color: #C25B00;
+    margin-bottom: 1.5rem; 
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.modal-image-container {
+    margin-top: 0; 
+    margin-bottom: 0.1rem;
+    width: 200px; 
+    height: 200px;
+    overflow: hidden;
+    border-radius: 1rem; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    border: 4px solid #FFA500;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.modal-puzzle-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.modal-moves {
+    font-size: 1.4rem; 
+    font-weight: 800; 
+    color: #D95B00; 
+    margin-bottom: 0.2rem; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.modal-new-highscore {
+    font-size: 1.2rem;
+    font-weight: 900; 
+    color: #A0522D; 
+    margin-top: 0.49rem; 
+    animation: pulse 1.5s infinite ease-in-out; 
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.08em; 
+    flex-shrink: 0;
+}
+
+.modal-old-highscore {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #A0522D;
+    margin-top: 0.49rem;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.modal-actions {
+    margin-top: 0.1px; 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+    width: 100%;
+    max-width: 300px;
+    flex-shrink: 0;
+}
+
+.modal-action-button {
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modal-action-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.modal-action-button.next-level-button {
+    background-color: #FF8C00;
+}
+
+.modal-action-button.next-level-button:hover {
+    background-color: #FF7F50;
+}
+
+.modal-action-button.replay-button {
+    background-color: #FFB300;
+}
+.modal-action-button.replay-button:hover {
+    background-color: orange;
+}
+
+.modal-action-button.exit-button {
+    background-color: #D2691E;
+}
+.modal-action-button.exit-button:hover {
+    background-color: #A0522D;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.04);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

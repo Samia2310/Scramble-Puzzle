@@ -1,0 +1,60 @@
+/* clients/src/components/PuzzleBoard.css */
+
+.puzzle-board-container {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 650px;
+    width: 100%;
+    border: 1.5px solid #FFA500; 
+    overflow: hidden; 
+}
+
+.puzzle-tile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 165, 0, 0.15); 
+    border-radius: 0;
+    transition-property: transform;
+    transition-duration: 200ms;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1; 
+}
+
+.empty-tile {
+    background-color: transparent;
+    cursor: default;
+}
+
+.filled-tile {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly darker shadow for more depth */
+    background-color: #21150222; /* A very light, creamy orange for visible parts of the tile */
+}
+
+.filled-tile:hover {
+    transform: scale(1.03); /* Slightly more pronounced scale up on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
+}
+
+.filled-tile:active {
+    transform: scale(0.97); /* Slight scale down on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow on active */
+}
+
+.tile-number {
+    position: absolute;
+    bottom: 10px; 
+    left: 5px; 
+    font-size: 0.6rem; 
+    color: #2a1702; 
+    font-weight: 700;
+    border: 2px solid rgba(240, 127, 14, 0.15); 
+    background-color: white; 
+    padding: 0.055rem 0.075rem;
+}
