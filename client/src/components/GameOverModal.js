@@ -1,8 +1,7 @@
 import React from 'react';
-import './GameOverModal.css'; // Make sure you import its CSS
+import './GameOverModal.css'; 
 
 function GameOverModal({ image, moves, isNewHighScore, onPlayAgain, onNextLevel, onExitToHome, bestScore, onButtonClick }) {
-    // Wrap original functions to include sound
     const handlePlayAgainClick = () => {
         onButtonClick();
         onPlayAgain();
@@ -42,19 +41,19 @@ function GameOverModal({ image, moves, isNewHighScore, onPlayAgain, onNextLevel,
 
                 <div className="modal-actions">
                     <button
-                        onClick={handleNextLevelClick} // Use wrapped function
+                        onClick={handleNextLevelClick} 
                         className="modal-action-button next-level-button"
                     >
                         Next Level
                     </button>
                     <button
-                        onClick={handlePlayAgainClick} // Use wrapped function
+                        onClick={handlePlayAgainClick} 
                         className="modal-action-button replay-button"
                     >
                         Play Again
                     </button>
                     <button
-                        onClick={handleExitToHomeClick} // Use wrapped function
+                        onClick={handleExitToHomeClick}
                         className="modal-action-button exit-button"
                     >
                         Exit to Home

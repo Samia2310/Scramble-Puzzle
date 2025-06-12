@@ -33,18 +33,18 @@
 }
 
 .filled-tile {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly darker shadow for more depth */
-    background-color: #21150222; /* A very light, creamy orange for visible parts of the tile */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #21150222; 
 }
 
 .filled-tile:hover {
-    transform: scale(1.03); /* Slightly more pronounced scale up on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
+    transform: scale(1.03); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); 
 }
 
 .filled-tile:active {
-    transform: scale(0.97); /* Slight scale down on click */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow on active */
+    transform: scale(0.97);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .tile-number {

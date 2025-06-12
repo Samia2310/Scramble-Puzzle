@@ -12,22 +12,14 @@ const ImageSelectionModal = ({ images, onClose, onSelectImage }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  // Helper function to format the image name for display
   const formatImageName = (imagePath) => {
-    // 1. Get the filename from the full path (e.g., "/images/lego_city.jpg" -> "lego_city.jpg")
     const filename = imagePath.split('/').pop();
-
-    // 2. Remove the file extension (e.g., "lego_city.jpg" -> "lego_city")
     const nameWithoutExtension = filename.split('.')[0];
-
-    // 3. Replace underscores with spaces (e.g., "lego_city" -> "lego city")
     const withSpaces = nameWithoutExtension.replace(/_/g, ' ');
-
-    // 4. Capitalize the first letter of each word (e.g., "lego city" -> "Lego City")
     return withSpaces
-      .split(' ') // Split the string into an array of words
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize first letter of each word
-      .join(' '); // Join the words back into a single string
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' '); 
   };
 
   return (
@@ -40,7 +32,7 @@ const ImageSelectionModal = ({ images, onClose, onSelectImage }) => {
     >
       <div
         className="image-selection-modal-content"
-        onClick={(e) => e.stopPropagation()} // Prevent clicks inside content from closing modal
+        onClick={(e) => e.stopPropagation()} 
       >
         <button className="close-button" onClick={onClose} aria-label="Close Modal">
           &times;
@@ -52,15 +44,12 @@ const ImageSelectionModal = ({ images, onClose, onSelectImage }) => {
               key={index}
               className="image-grid-item"
               onClick={() => onSelectImage(index)}
-              // Update aria-label for accessibility to use the formatted name
               aria-label={`Select Image: ${formatImageName(imagePath)}`}
             >
               <img
                 src={imagePath}
-                // Update alt text for accessibility to use the formatted name
                 alt={`Puzzle option: ${formatImageName(imagePath)}`}
               />
-              {/* Display the formatted name here */}
               <p>{formatImageName(imagePath)}</p>
             </button>
           ))}

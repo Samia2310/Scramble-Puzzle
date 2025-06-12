@@ -11,80 +11,60 @@ const sanitizeImageName = (imageName) =>
     imageName.replace(/\./g, '_').replace(/\//g, '_');
 
 function App() {
-    const [level, setLevel] = useState(4); 
-    const [currentImage, setCurrentImage] = useState(0); 
-    const [puzzle, setPuzzle] = useState([]); 
-    const [moves, setMoves] = useState(0); 
-    const [gameOver, setGameOver] = useState(false); 
+    const [level, setLevel] = useState(4);
+    const [currentImage, setCurrentImage] = useState(0);
+    const [puzzle, setPuzzle] = useState([]);
+    const [moves, setMoves] = useState(0);
+    const [gameOver, setGameOver] = useState(false);
     const [highScores, setHighScores] = useState({
         veryEasy: {}, easy: {}, medium: {}, hard: {}});
-    const [isNewHighScore, setIsNewHighScore] = useState(false); 
-    const [hasPlayedVictorySound, setHasPlayedVictorySound] = useState(false); 
-    const [currentPage, setCurrentPage] = useState('startPage'); 
-    const [isImageSelectionModalOpen, setIsImageSelectionModalOpen] = useState(false); 
+    const [isNewHighScore, setIsNewHighScore] = useState(false);
+    const [hasPlayedVictorySound, setHasPlayedVictorySound] = useState(false);
+    const [currentPage, setCurrentPage] = useState('startPage');
+    const [isImageSelectionModalOpen, setIsImageSelectionModalOpen] = useState(false);
     const images = useMemo(() => [
-        '/images/morning_sunflower.jpg',
-        '/images/garden_whisper.jpg',
-        '/images/country_road.jpg',
-        '/images/acoustic_rhapsody.jpg',
-        '/images/sunset_sips_&_snacks.jpg',
-        '/images/whimsy_popaye.jpg',
-        '/images/lilac_scoop.jpg',
-        '/images/retro_ride.jpg',
-        '/images/sugarplum_brew.jpg',
-        '/images/frienemies_forever.jpg',
-        '/images/playful_world.jpg',
-        '/images/storybook_sanctuary.jpg',
-        '/images/bloom_&_capture.jpg',
-        '/images/paper_pilot.jpg',
-        '/images/morning_flavors.jpg',
-        '/images/happy_haul.jpg',
-        '/images/toasted_morning.jpg',
-        '/images/floral_timepiece.jpg',
-        '/images/crispy_fizz_craving.jpg',
-        '/images/mystic_melodies.jpg',
-        '/images/pink_parcel_express.jpg',
-        '/images/latte_canvas.jpg',
-        '/images/adorable_jerry.jpg',
-        '/images/old-school_call.jpg',
-        '/images/FRIENDS.jpg',
-        '/images/autumn_serenity.jpg',
-        '/images/scooby_adventure.jpg',
-        '/images/miniature_monsoon.jpg',
-        '/images/daisy_time_ride.jpg',
-        '/images/tranquil_voyage.jpg',
-        '/images/emergency_escape.jpg',
-        '/images/whispercore.jpg',
-        '/images/paper_sky_&_beyond.jpg',
-        '/images/mathematics_melodies.jpg',
-        '/images/crimson_clouds.jpg',
-        '/images/wanderLens.jpg',
-        '/images/sunny_side_ride.jpg',
-        '/images/sweet_slice.jpg',
-        '/images/chromatic_cassette.jpg',
-        '/images/capture_moments.jpg',
-        '/images/crafty_kit.jpg',
-        '/images/creative_corner.jpg',
-        '/images/bean_&_teddy.jpg',
-        '/images/countryside_cafe.jpg',
-        '/images/spring_toast.jpg',
-    ], []); 
+        '/images/morning_sunflower.jpg','/images/garden_whisper.jpg',
+        '/images/country_road.jpg','/images/acoustic_rhapsody.jpg',
+        '/images/sunset_sips_&_snacks.jpg','/images/whimsy_popaye.jpg',
+        '/images/lilac_scoop.jpg','/images/retro_ride.jpg',
+        '/images/sugarplum_brew.jpg','/images/frienemies_forever.jpg',
+        '/images/playful_world.jpg','/images/road_to_success.jpg',
+        '/images/bloom_&_capture.jpg','/images/paper_pilot.jpg',
+        '/images/morning_flavors.jpg','/images/happy_haul.jpg',
+        '/images/toasted_morning.jpg','/images/floral_timepiece.jpg',
+        '/images/crispy_fizz_craving.jpg','/images/mystic_melodies.jpg',
+        '/images/pink_parcel_express.jpg','/images/latte_canvas.jpg',
+        '/images/adorable_jerry.jpg', '/images/old-school_call.jpg',
+        '/images/FRIENDS.jpg', '/images/autumn_serenity.jpg',
+        '/images/scooby_adventure.jpg', '/images/miniature_monsoon.jpg',
+        '/images/daisy_time_ride.jpg','/images/tranquil_voyage.jpg',
+        '/images/emergency_escape.jpg','/images/whispercore.jpg',
+        '/images/paper_sky_&_beyond.jpg','/images/mathematics_melodies.jpg',
+        '/images/crimson_clouds.jpg','/images/wanderLens.jpg',
+        '/images/sunny_side_ride.jpg','/images/sweet_slice.jpg',
+        '/images/chromatic_cassette.jpg','/images/capture_moments.jpg',
+        '/images/crafty_kit.jpg','/images/creative_corner.jpg',
+        '/images/bean_&_teddy.jpg','/images/countryside_cafe.jpg',
+        '/images/spring_toast.jpg','/images/storybook_sanctuary.jpg',
+        '/images/roadside_tastes.jpg','/images/painted_panorama.jpg',
+        '/images/mystical_moonlight.jpg','/images/gifting_happiness.jpg'
+    ], []);
     const API_BASE_URL = process.env.NODE_ENV === 'production'
-        ? 'https://your-heroku-app.com/api' 
-        : 'http://localhost:5000/api'; 
+        ? 'https://your-heroku-app.com/api'
+        : 'http://localhost:5000/api';
     const slideAudioRef = useRef(null);
     const levelSolvedAudioRef = useRef(null);
     const startPageClickAudioRef = useRef(null);
-    const buttonClickAudioRef = useRef(null); 
+    const buttonClickAudioRef = useRef(null);
     const formatImageName = useCallback((imagePath) => {
-        const filename = imagePath.split('/').pop(); 
-        const nameWithoutExtension = filename.split('.')[0]; 
-        const withSpaces = nameWithoutExtension.replace(/_/g, ' '); 
+        const filename = imagePath.split('/').pop();
+        const nameWithoutExtension = filename.split('.')[0];
+        const withSpaces = nameWithoutExtension.replace(/_/g, ' ');
         return withSpaces
-            .split(' ') 
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
-            .join(' '); 
-    }, []); 
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    }, []);
 
     useEffect(() => {
         slideAudioRef.current = new Audio('/audios/puzzleSlide.wav');
@@ -95,7 +75,7 @@ function App() {
         startPageClickAudioRef.current = new Audio('/audios/startPageClick.wav');
         startPageClickAudioRef.current.volume = 1.0;
         buttonClickAudioRef.current = new Audio('/audios/click.wav');
-        buttonClickAudioRef.current.volume = 1.0; 
+        buttonClickAudioRef.current.volume = 1.0;
     }, []);
 
     const fetchHighScores = useCallback(async () => {
@@ -108,7 +88,7 @@ function App() {
         } catch (err) {
             console.error("Error fetching high scores:", err);
         }
-    }, [API_BASE_URL]); 
+    }, [API_BASE_URL]);
 
     const startNewGame = useCallback(() => {
         const newPuzzle = generateSolvablePuzzle(level);
@@ -117,7 +97,7 @@ function App() {
         setGameOver(false);
         setIsNewHighScore(false);
         setHasPlayedVictorySound(false);
-    }, [level]); 
+    }, [level]);
 
     const handleStartPageButtonClick = useCallback(() => {
         if (startPageClickAudioRef.current) {
@@ -126,7 +106,7 @@ function App() {
                 console.error("Start page click sound error:", e)
             );
         }
-    }, []); 
+    }, []);
 
     const handleButtonClick = useCallback(() => {
         if (buttonClickAudioRef.current) {
@@ -135,22 +115,22 @@ function App() {
                 console.error("Button click sound error:", e)
             );
         }
-    }, []); 
+    }, []);
     const handleSelectLevel = useCallback((selectedLevel) => {
         handleStartPageButtonClick();
         setLevel(selectedLevel);
-        setCurrentImage(Math.floor(Math.random() * images.length)); 
-        setCurrentPage('gamePage'); 
-    }, [images.length, handleStartPageButtonClick]); 
+        setCurrentImage(Math.floor(Math.random() * images.length));
+        setCurrentPage('gamePage');
+    }, [images.length, handleStartPageButtonClick]);
     const handleImageSelected = useCallback((index) => {
         handleButtonClick();
         setCurrentImage(index);
-        setIsImageSelectionModalOpen(false); 
-        setGameOver(false); 
+        setIsImageSelectionModalOpen(false);
+        setGameOver(false);
         setMoves(0);
         setIsNewHighScore(false);
         setHasPlayedVictorySound(false);
-    }, [handleButtonClick]); 
+    }, [handleButtonClick]);
     const checkAndSubmitHighScore = useCallback(async () => {
         const levelKey =
             level === 2 ? 'veryEasy' :
@@ -175,13 +155,13 @@ function App() {
         } catch (err) {
             console.error("Error submitting high score:", err);
         }
-    }, [moves, level, currentImage, images, API_BASE_URL]); 
+    }, [moves, level, currentImage, images, API_BASE_URL]);
     useEffect(() => {
         if (currentPage === 'gamePage') {
             fetchHighScores();
             startNewGame();
         }
-    }, [level, currentImage, currentPage, fetchHighScores, startNewGame]); 
+    }, [level, currentImage, currentPage, fetchHighScores, startNewGame]);
     useEffect(() => {
         if (puzzle.length > 0 && isSolved(puzzle, level)) {
             if (!hasPlayedVictorySound) {
@@ -206,21 +186,21 @@ function App() {
         }
     }, [puzzle, level, checkAndSubmitHighScore, hasPlayedVictorySound]);
     const handleTileClick = (index) => {
-        if (gameOver) return; 
-        const emptyIndex = puzzle.indexOf(level * level - 1); 
+        if (gameOver) return;
+        const emptyIndex = puzzle.indexOf(level * level - 1);
         const row = Math.floor(index / level);
         const col = index % level;
         const emptyRow = Math.floor(emptyIndex / level);
         const emptyCol = emptyIndex % level;
         const canMove =
-            (Math.abs(row - emptyRow) === 1 && col === emptyCol) || 
-            (Math.abs(col - emptyCol) === 1 && row === emptyRow); 
+            (Math.abs(row - emptyRow) === 1 && col === emptyCol) ||
+            (Math.abs(col - emptyCol) === 1 && row === emptyRow);
 
         if (canMove) {
             const newPuzzle = [...puzzle];
             [newPuzzle[index], newPuzzle[emptyIndex]] = [newPuzzle[emptyIndex], newPuzzle[index]];
             setPuzzle(newPuzzle);
-            setMoves(m => m + 1); 
+            setMoves(m => m + 1);
             if (slideAudioRef.current) {
                 slideAudioRef.current.currentTime = 0;
                 slideAudioRef.current.play().catch(err =>
@@ -232,16 +212,16 @@ function App() {
     const handleNextLevel = () => {
         handleButtonClick();
         if (currentImage < images.length - 1) {
-            setCurrentImage(prev => prev + 1); 
-            startNewGame(); 
+            setCurrentImage(prev => prev + 1);
+            startNewGame();
         } else {
             alert("You've completed all images! Returning to home.");
-            handleExitToHome(); 
+            handleExitToHome();
         }
     };
     const handleShuffle = () => {
         handleButtonClick();
-        startNewGame(); 
+        startNewGame();
     };
     const handleExitToHome = () => {
         handleButtonClick();
@@ -271,10 +251,11 @@ function App() {
                     <div className="game-controls-and-highscores-top-right">
                         <Controls moves={moves} />
                     </div>
-                    <div className="best-score-display">
-                        🏆 Best Score for this level:{' '}
-                        {bestScore > 0 ? bestScore : 'N/A'}
-                    </div>
+                    {bestScore > 0 && ( 
+                        <div className="best-score-display">
+                            🏆 Best Score for this level: {bestScore}
+                        </div>
+                    )}
                     <div className="puzzle-board-center">
                         <PuzzleBoard
                             puzzle={puzzle}
@@ -302,8 +283,8 @@ function App() {
                         <p>{formatImageName(images[currentImage])}</p>
                         <button
                             onClick={() => {
-                                handleButtonClick(); 
-                                setIsImageSelectionModalOpen(true); 
+                                handleButtonClick();
+                                setIsImageSelectionModalOpen(true);
                             }}
                             className="choose-image-button"
                         >
