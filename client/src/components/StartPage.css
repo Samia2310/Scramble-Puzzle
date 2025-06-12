@@ -126,3 +126,52 @@
     transform: translateY(0);
   }
 }
+
+/* --- Mobile Responsive Styles --- */
+@media (max-width: 768px) {
+  .start-page-container {
+    padding: 1.5rem; 
+  }
+
+  .start-page-title {
+    font-size: 2.8rem; 
+    margin-bottom: 1rem;
+  }
+
+  .start-page-description {
+    font-size: 1.2rem; 
+    margin-bottom: 2rem;
+    text-align: center; 
+  }
+
+  .difficulty-buttons {
+    gap: 1rem;
+    max-width: 18rem;
+  }
+
+  .difficulty-button {
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem; 
+  }
+}
+
+/* --- Small Mobile Devices (e.g., iPhone SE) --- */
+@media (max-width: 480px) {
+  .start-page-title {
+    font-size: 2.2rem; 
+  }
+
+  .start-page-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .difficulty-buttons {
+    max-width: 15rem;
+  }
+
+  .difficulty-button {
+    padding: 0.8rem 1.2rem; 
+    font-size: 1.1rem; 
+  }
+}
