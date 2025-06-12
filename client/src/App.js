@@ -53,6 +53,11 @@ function App() {
         '/images/emergency_escape.jpg',
         '/images/whispercore.jpg',
         '/images/mathematics_melodies.jpg',
+        '/images/crimson_clouds.jpg',
+        '/images/wanderLens.jpg',
+        '/images/sunny_side_ride.jpg',
+        '/images/sweet_slice.jpg',
+        '/images/floral_truck.jpg'
     ], []); 
     const API_BASE_URL = process.env.NODE_ENV === 'production'
         ? 'https://your-heroku-app.com/api' 
